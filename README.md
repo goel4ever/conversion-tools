@@ -4,7 +4,7 @@ Handy Conversion tools needed in daily life every once in a while. Writing my ow
 
 ### Tools
 
-* ASCII Lookup [ASCII](/ascii.html)
+* [ASCII Lookup](/conversion-tools/ascii.html)
 
 ```markdown
 Syntax highlighted code block
