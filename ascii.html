@@ -41,11 +41,22 @@
         function convertAll() {
           if (char.value !== '') {
             var decimalValue = char.value.charCodeAt(0);
+            var binaryValue = decimalValue.toString(2).toUpperCase();
+            while( binaryValue.length < 8 ) {
+              binaryValue = "0" + binaryValue;
+            }
+            binary.value = binaryValue;
+
             decimal.value = decimalValue;
             hex.value = decimalValue.toString(16).toUpperCase();
-            binary.value = decimalValue.toString(2).toUpperCase();
             htmlCode.value = '&#' + decimalValue + ';';
             escapeCode.value = getEscape(decimalValue, hex.value);
+          } else {
+            binary.value = "";
+            decimal.value = "";
+            hex.value = "";
+            htmlCode.value = "";
+            escapeCode.value = "";
           }
 
         }
