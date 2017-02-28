@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ASCII Lookup</title>
+</head>
+<body>
+    <div>
+        <ul>
+            <li>
+                Character <input type="text" id="char" onkeyup="convertAll()" placeholder="Character" maxlength="1">
+            </li>
+            <li>
+                Decimal <input type="text" id="decimal" readonly placeholder="Decimal">
+            </li>
+            <li>
+                Hex Code <input type="text" id="hex" readonly placeholder="Hex Code">
+            </li>
+            <li>
+                Binary <input type="text" id="binary" readonly placeholder="Binary Code">
+            </li>
+            <li>
+                HTML Code <input type="text" id="htmlCode" readonly placeholder="HTML Code">
+            </li>
+            <li>
+                Escape <input type="text" id="escapeCode" readonly placeholder="Escape Code">
+            </li>
+        </ul>
+    </div>
+    <script type="application/javascript">
+        var char = document.getElementById("char");
+        var decimal = document.getElementById("decimal");
+        var hex = document.getElementById("hex");
+        var binary = document.getElementById("binary");
+        var htmlCode = document.getElementById("htmlCode");
+        var escapeCode = document.getElementById("escapeCode");
+
+        function convertAll() {
+          if (char.value !== '') {
+            var decimalValue = char.value.charCodeAt(0);
+            decimal.value = decimalValue;
+            hex.value = decimalValue.toString(16).toUpperCase();
+            binary.value = decimalValue.toString(2).toUpperCase();
+            htmlCode.value = '&#' + decimalValue + ';';
+            escapeCode.value = getEscape(decimalValue, hex.value);
+          }
+
+        }
+
+        function getEscape(decimal, hex) {
+          var code = '\\x' + hex;
+          if( decimal==0 ) code='\\0';
+          if( decimal==7 ) code='\\a';
+          if( decimal==8 ) code='\\b';
+          if( decimal==9 ) code='\\t';
+          if( decimal==10 ) code='\\n';
+          if( decimal==11 ) code='\\v';
+          if( decimal==12 ) code='\\f';
+          if( decimal==13 ) code='\\r';
+          if( decimal==34 ) code='\\\"';
+          if( decimal==39 ) code='\\\'';
+          if( decimal==63 ) code='\\\?';
+          if( decimal==92 ) code='\\\\';
+          return code;
+        }
+    </script>
+</body>
+</html>
