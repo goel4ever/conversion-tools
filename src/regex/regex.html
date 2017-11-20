@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>RegEx validator</title>
+</head>
+<body>
+    <div>
+      Name <input type="text" id="txtName" onkeyup="callTheFunction('name', this)">
+    </div>
+    <div>
+      Email <input type="text" id="txtEmail" onkeyup="callTheFunction('email', this)">
+    </div>
+    <div>
+      Label <label id="lblSuccess"></label>
+    </div>
+    <script type="application/javascript" src="./regex-util.js"></script>
+    <script type="application/javascript">
+      var lblSuccess = document.getElementById("lblSuccess");
+
+        function callTheFunction(type, ref) {
+          var elem = ref;
+          var txtValue = ref.value;
+          lblSuccess.innerText = validate(type, txtValue);
+        }
+    </script>
+</body>
+</html>
