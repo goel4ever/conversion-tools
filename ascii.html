@@ -11,7 +11,7 @@
     <div>
         <ul>
             <li>
-                Character <input type="text" id="char" onkeyup="convertAll()" placeholder="Character" maxlength="1">
+                Character <input type="text" id="char" onkeyup="callTheFunction()" placeholder="Character" maxlength="1">
             </li>
             <li>
                 Decimal <input type="text" id="decimal" readonly placeholder="Decimal">
@@ -30,6 +30,7 @@
             </li>
         </ul>
     </div>
+    <script type="application/javascript" src="./src/ascii-converter.js" />
     <script type="application/javascript">
         var char = document.getElementById("char");
         var decimal = document.getElementById("decimal");
@@ -38,44 +39,13 @@
         var htmlCode = document.getElementById("htmlCode");
         var escapeCode = document.getElementById("escapeCode");
 
-        function convertAll() {
-          if (char.value !== '') {
-            var decimalValue = char.value.charCodeAt(0);
-            var binaryValue = decimalValue.toString(2).toUpperCase();
-            while( binaryValue.length < 8 ) {
-              binaryValue = "0" + binaryValue;
-            }
-            binary.value = binaryValue;
-
-            decimal.value = decimalValue;
-            hex.value = decimalValue.toString(16).toUpperCase();
-            htmlCode.value = '&#' + decimalValue + ';';
-            escapeCode.value = getEscape(decimalValue, hex.value);
-          } else {
-            binary.value = "";
-            decimal.value = "";
-            hex.value = "";
-            htmlCode.value = "";
-            escapeCode.value = "";
-          }
-
-        }
-
-        function getEscape(decimal, hex) {
-          var code = '\\x' + hex;
-          if( decimal==0 ) code='\\0';
-          if( decimal==7 ) code='\\a';
-          if( decimal==8 ) code='\\b';
-          if( decimal==9 ) code='\\t';
-          if( decimal==10 ) code='\\n';
-          if( decimal==11 ) code='\\v';
-          if( decimal==12 ) code='\\f';
-          if( decimal==13 ) code='\\r';
-          if( decimal==34 ) code='\\\"';
-          if( decimal==39 ) code='\\\'';
-          if( decimal==63 ) code='\\\?';
-          if( decimal==92 ) code='\\\\';
-          return code;
+        function callTheFunction() {
+          var content = convertAll(char.value);
+          decimal.value = content.decimal;
+          hex.value = content.hex;
+          binary.value = content.binary;
+          htmlCode.value = content.htmlCode;
+          escapeCode.value = content.escapeCode;
         }
     </script>
 </body>

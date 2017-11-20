@@ -1,0 +1,19 @@
+{
+  "name": "conversion-tools",
+  "version": "1.0.0",
+  "description": "Handy Conversion tools needed in daily life every once in a while. Writing my own to keep the compilation together.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/goel4ever/conversion-tools.git"
+  },
+  "author": "Anshul Goel <dec.anshul@gmail.com> (http://goel4ever.github.io/)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/goel4ever/conversion-tools/issues"
+  },
+  "homepage": "https://github.com/goel4ever/conversion-tools#readme"
+}
